@@ -7,6 +7,30 @@
 - 支持推送消息到pushplus平台(server酱和pushplus选择一个就好，也可以同时推送，如果不配置则不进行推送)
 - 支持推送消息到server酱(server酱和pushplus选择一个就好，也可以同时推送，如果不配置则不进行推送)
 
+## 重要！重要！
+
+### 在fork本项目并配置完成后，请启动工作流并检查是否已经执行签到
+
+启动工作流
+<p align="center">
+  <img src="images/check_workflow_1.png" />
+</p>
+执行完毕或者执行失败时，点击进入
+<p align="center">
+  <img src="images/check_workflow_2.png" />
+</p>
+
+<p align="center">
+  <img src="images/check_workflow_3.png" />
+</p>
+如果查看checkin的时候出现error，请多尝试几次,这不是本程序代码错误，是因为actions的问题，如果日志中出现错误，请提出
+<p align="center">
+  <img src="images/check_workflow_log_error.png" />
+</p>
+<p align="center">
+  <img src="images/check_workflow_4.png" />
+</p>
+
 ## 使用教程
 
 ### 1. glados签到教程
