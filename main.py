@@ -41,7 +41,7 @@ if __name__ == '__main__':
 
             # 存在账户签到信息，说明成功执行了签到
             if account_checkin_message is not None and len(account_checkin_message) > 0:
-                checkin_message.append(f"【Cloud189 Account_{idx + 1}】 checkin message:" + account_checkin_message + "\n")
+                checkin_message.append(f"【Cloud189 Account_{idx + 1}】 checkin message:" + str(account_checkin_message) + "\n")
 
     # 所有账号签到完毕，判断是否有签到信息，如果有签到信息说明账号执行了签到
     if checkin_message is not None and len(checkin_message) > 0:
