@@ -6,6 +6,7 @@
 - 本项目包含Github Actions keep alive模块，可自动激活Github Actions
 - 支持推送消息到pushplus平台(server酱和pushplus选择一个就好，也可以同时推送，如果不配置则不进行推送)
 - 支持推送消息到server酱(server酱和pushplus选择一个就好，也可以同时推送，如果不配置则不进行推送)
+- 支持自动同步仓库上游代码,参考第4部分进行配置
 
 ## 重要！重要！
 
@@ -92,13 +93,14 @@
 
 ### 4 自动同步仓库上游代码(可选)
 
-本项目提供了一种用于自动和上游仓库进行同步的工作流。该工作流开启后，将会自动从上游仓库拉取代码并覆盖掉自行修改的内容。该工作流有助于从源仓库获取最近更新，但不利于对本项目进行的二次开发。
+本项目提供了一种用于自动和上游仓库进行同步的工作流。
+##### 该工作流开启后，将会自动从上游仓库拉取代码并覆盖掉自行修改的内容。该工作流有助于从源仓库获取最近更新，但不利于对本项目进行的二次开发。
 
-工作流默认不触发，开启后【每周一】执行一次，若需关闭/开启可参考[禁用和启用工作流程](https://docs.github.com/cn/enterprise-server@3.3/actions/managing-workflow-runs/disabling-and-enabling-a-workflow)
+##### 工作流默认不触发，开启后【每周一】执行一次，若需关闭/开启可参考[禁用和启用工作流程](https://docs.github.com/cn/enterprise-server@3.3/actions/managing-workflow-runs/disabling-and-enabling-a-workflow)
 
 配置步骤如下：
 
-- 首先生成[Personal access token](https://github.com/settings/tokens/new)用于获得对仓库的访问权限。
+1. 首先生成[Personal access token](https://github.com/settings/tokens/new)用于获得对仓库的访问权限。
 
     - Note项填写token的名字，用户自由命名即可
     - Expiration项填写token过期时长，建议填写为No Expiration
@@ -106,7 +108,7 @@
     <p align="center">
       <img src="images/reposync_setting.png" />
     </p>
-- 滑动到页面最下方点击Generate token获得token，并手动复制token值。
+2. 滑动到页面最下方点击Generate token获得token，并手动复制token值。
 
 #### 重要！！重要！！！ 该token值仅显示一次，关闭页面后无法找回。
 
@@ -115,7 +117,7 @@
 </p>
 
 
-在本仓库创建名为`REPOSYNC_TOKEN`的secret，将上一步生成的token作为`REPOSYNC_TOKEN`的值。
+3. 在本仓库创建名为`REPOSYNC_TOKEN`的secret，将上一步生成的token作为`REPOSYNC_TOKEN`的值。
 
 #### 手动启动触发工作流以开启自动同步功能。
 
