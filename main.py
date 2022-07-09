@@ -16,7 +16,6 @@ if __name__ == '__main__':
     # server酱token
     server_token = os.environ['SERVER_TOKEN']
 
-    account_checkin_message = []
     checkin_message = []
 
     # gloads 执行签到
