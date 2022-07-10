@@ -1,7 +1,6 @@
 # Auto_CheckIn
 
 - 各大网站自动签到脚本，基于github actions
-- 目前支持GLADOS，天翼云盘，后期会支持更多
 - 支持多用户签到，多个Cookie之间采用`&@@&`手动分割
 - 本项目包含Github Actions keep alive模块，可自动激活Github Actions
 - 支持推送消息到pushplus平台(server酱和pushplus选择一个就好，也可以同时推送，如果不配置则不进行推送)
@@ -39,7 +38,9 @@
 </p>
 
 ## 使用教程
+
 ### 各平台签到教程
+
 #### 1. glados签到教程
 
 ##### 1.1 添加 GLADOS_COOKIE 至 Secrets
