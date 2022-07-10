@@ -1,5 +1,6 @@
 import os
 
+from bilibili_checkin import bilibili_checkin
 from cloud_189_checkin import *
 from push_message.push_message import *
 from glados_checkin.glados import glados
@@ -11,6 +12,8 @@ if __name__ == '__main__':
     glados_cookie = os.environ['GLADOS_COOKIE']
     # 天翼云盘cookie
     cloud189_cookie = os.environ['CLOUD189_COOKIE']
+    # bilibili直播 cookie
+    bilibili_live_cookie = os.environ['BILIBILI_COOKIE']
     # pushplus平台token
     pushplus_token = os.environ['PUSHPLUS_TOKEN']
     # server酱token
@@ -28,7 +31,7 @@ if __name__ == '__main__':
 
             # 存在账户签到信息，说明成功执行了签到
             if account_checkin_message is not None and len(account_checkin_message) > 0:
-                checkin_message.append(f"【Gloads_Account_{idx + 1}】 checkin message:" + account_checkin_message + "\n")
+                checkin_message.append(f"【Gloads_Account_{idx + 1}】 checkin message:" + account_checkin_message + "      \n")
 
     # 天翼云盘执行签到
     if cloud189_cookie is not None and len(cloud189_cookie) > 0:
@@ -43,7 +46,19 @@ if __name__ == '__main__':
                 cloud189_result = ''
                 for i in range(0, len(account_checkin_message)):
                     cloud189_result += account_checkin_message[i] + ';'
-                checkin_message.append(f"【Cloud189_Account_{idx + 1}】 checkin message:" + str(cloud189_result) + "\n")
+                checkin_message.append(f"【Cloud189_Account_{idx + 1}】 checkin message:" + str(cloud189_result) + "      \n")
+
+        # bilibili直播签到
+        if bilibili_live_cookie is not None and len(bilibili_live_cookie) > 0:
+            bilibili_live_cookies = bilibili_live_cookie.split(split_str)
+            # 遍历cookie执行签到，并返回签到状态码和签到信息
+            for idx, cookie in enumerate(bilibili_live_cookies):
+                print(f"【Bilibili_Account_{idx + 1}】:")
+                account_checkin_message = bilibili_checkin(cookie)
+
+                # 存在账户签到信息，说明成功执行了签到
+                if account_checkin_message is not None and len(account_checkin_message) > 0:
+                    checkin_message.append(f"【Bilibili_Account_{idx + 1}】 checkin message:" + str(account_checkin_message) + "      \n")
 
     # 所有账号签到完毕，判断是否有签到信息，如果有签到信息说明账号执行了签到
     if checkin_message is not None and len(checkin_message) > 0:

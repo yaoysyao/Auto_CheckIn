@@ -8,6 +8,12 @@
 - 支持推送消息到server酱(server酱和pushplus选择一个就好，也可以同时推送，如果不配置则不进行推送)
 - 支持自动同步仓库上游代码,参考第4部分进行配置
 
+## 目前支持签到平台
+
+- [GLaDOS平台](https://glados.rocks/)
+- [天翼云盘](https://cloud.189.cn/web/login.html)
+- [bilibili直播](https://live.bilibili.com/?spm_id_from=333.1007.0.0)
+
 ## 重要！重要！
 
 ### 在fork本项目并配置完成后，请启动工作流并检查是否已经执行签到
@@ -33,10 +39,10 @@
 </p>
 
 ## 使用教程
+### 各平台签到教程
+#### 1. glados签到教程
 
-### 1. glados签到教程
-
-#### 1.1 添加 GLADOS_COOKIE 至 Secrets
+##### 1.1 添加 GLADOS_COOKIE 至 Secrets
 
 - 登陆[GLaDOS](https://glados.rocks/)后，F12打开开发者工具。
 - 刷新网页，并在浏览器中提取复制`Cookie`值，注意不要把`Cookie:`前缀加入进来！！！！！
@@ -61,16 +67,23 @@
   <img src="images/Step3.png" />
 </p>
 
-### 2 天翼云盘签到教程
+#### 2 天翼云盘签到教程
 
-#### 2.1 添加 天翼云盘cookie 至 Secrets
+##### 2.1 添加 天翼云盘cookie 至 Secrets
 
 - 同方法1.1,首先需要登录天翼云盘获取cookie，然后建立名为`CLOUD189_COOKIE`的 secret，值为复制的`Cookie`内容，最后点击`Add secret`
 - 支持多用户签到，多个Cookie之间采用`&@@&`手动分割完成后填入`CLOUD189_COOKIE`即可
 
-### 3 消息推送配置教程(可选,不配置则不进行推送)
+#### 3 bilibili直播签到教程
 
-#### 3.1 添加 PUSHPLUS的token值 至 Secrets
+##### 3.1 添加 bilibili直播cookie 至 Secrets
+
+- 同方法1.1,首先需要登录天翼云盘获取cookie，然后建立名为`BILIBILI_COOKIE`的 secret，值为复制的`Cookie`内容，最后点击`Add secret`
+- 支持多用户签到，多个Cookie之间采用`&@@&`手动分割完成后填入`BILIBILI_COOKIE`即可
+
+### 消息推送配置教程(可选,不配置则不进行推送)
+
+#### 添加 PUSHPLUS的token值 至 Secrets
 
 - 建立名为`PUSHPLUS_TOKEN`的 secret，值为复制的`pushplus（推送加平台的token）`，最后点击`Add secret`
 - 登陆[pushplus](http://www.pushplus.plus/)
@@ -79,7 +92,7 @@
   <img src="images/pushplus_token.png" />
 </p>
 
-#### 3.2 如果使用[server酱](https://sct.ftqq.com/)，请添加 SERVER_TOKEN 至 Secrets,如果不想推送通知可以不填写此项
+#### 如果使用[server酱](https://sct.ftqq.com/)，请添加 SERVER_TOKEN 至 Secrets,如果不想推送通知可以不填写此项
 
 - 建立名为`SERVER_TOKEN`的 secret，值为复制的`server酱的token`，最后点击`Add secret`
 
@@ -91,9 +104,10 @@
   <img src="images/checkin_info.png" />
 </p>
 
-### 4 自动同步仓库上游代码(可选)
+### 自动同步仓库上游代码(可选)
 
 本项目提供了一种用于自动和上游仓库进行同步的工作流。
+
 ##### 该工作流开启后，将会自动从上游仓库拉取代码并覆盖掉自行修改的内容。该工作流有助于从源仓库获取最近更新，但不利于对本项目进行的二次开发。
 
 ##### 工作流默认不触发，开启后【每周一】执行一次，若需关闭/开启可参考[禁用和启用工作流程](https://docs.github.com/cn/enterprise-server@3.3/actions/managing-workflow-runs/disabling-and-enabling-a-workflow)
@@ -115,7 +129,6 @@
 <p align="center">
   <img src="images/reposync_token.png" />
 </p>
-
 
 3. 在本仓库创建名为`REPOSYNC_TOKEN`的secret，将上一步生成的token作为`REPOSYNC_TOKEN`的值。
 

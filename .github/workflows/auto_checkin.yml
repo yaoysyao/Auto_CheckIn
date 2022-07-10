@@ -8,7 +8,7 @@ on:
   #  branches: [ main ]
 
   schedule:
-    - cron: "5 0 * * *"
+    - cron: "5 16 * * *"
 
   workflow_dispatch:
 
@@ -28,4 +28,5 @@ jobs:
           CLOUD189_COOKIE: '${{ secrets.CLOUD189_COOKIE }}'
           PUSHPLUS_TOKEN: ${{ secrets.PUSHPLUS_TOKEN }}
           SERVER_TOKEN: ${{ secrets.SERVER_TOKEN }}
+          BILIBILI_COOKIE: ${{ secrets.BILIBILI_COOKIE }}
       - uses: gautamkrishnar/keepalive-workflow@master

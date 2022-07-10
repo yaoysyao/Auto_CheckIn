@@ -1,0 +1,1 @@
+from bilibili_checkin.bilibili_auto_checkin import *
