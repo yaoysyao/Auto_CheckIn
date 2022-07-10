@@ -5,7 +5,7 @@
 - 本项目包含Github Actions keep alive模块，可自动激活Github Actions
 - 支持推送消息到pushplus平台(server酱和pushplus选择一个就好，也可以同时推送，如果不配置则不进行推送)
 - 支持推送消息到server酱(server酱和pushplus选择一个就好，也可以同时推送，如果不配置则不进行推送)
-- 支持自动同步仓库上游代码,参考第4部分进行配置
+- 支持自动同步仓库上游代码,参考(自动同步仓库上游代码)部分进行配置
 
 ## 目前支持签到平台
 
