@@ -34,7 +34,7 @@ def bilibili_checkin(cookie):
     result_json = resp.json()
     resp.close()
     if 'code' in result and 'data' in result and result_json['code'] == 0:
-        check_message = '签到成功,获得' + result_json['data']['text']
+        check_message = 'checkin success,the message is: ' + result_json['data']['text']
     elif 'code' in result and result_json['code'] == 1011040:
         check_message = result_json['message']
     else:
