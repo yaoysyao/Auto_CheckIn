@@ -1,2 +1,4 @@
 undetected-chromedriver
-urllib3
+urllib3~=1.26.9
+requests~=2.27.1
+selenium~=4.3.0
