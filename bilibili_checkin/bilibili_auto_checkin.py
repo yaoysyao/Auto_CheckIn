@@ -33,12 +33,16 @@ def bilibili_checkin(cookie):
     result = resp.text
     result_json = resp.json()
     resp.close()
+    # 签到成功
     if 'code' in result and 'data' in result and result_json['code'] == 0:
         check_message = 'checkin success,the message is: ' + result_json['data']['text']
+    # 签到失败
     elif 'code' in result and result_json['code'] == 1011040:
         check_message = result_json['message']
+    # 账号未登录,cookie过期
+    elif 'code' in result and result_json['code'] == -101:
+        check_message = result_json['message'] + ',cookie过期，请更新cookie'
     else:
         check_message = 'bilibili checkin error'
-        print('bilibili error message:', result)
     print(check_message)
     return check_message
