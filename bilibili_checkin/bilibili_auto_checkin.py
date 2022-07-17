@@ -44,5 +44,6 @@ def bilibili_checkin(cookie):
         check_message = result_json['message'] + ',cookie过期，请更新cookie'
     else:
         check_message = 'bilibili checkin error'
+    check_message = 'The bilibili checkin message: ' + check_message
     print(check_message)
     return check_message
