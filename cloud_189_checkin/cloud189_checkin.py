@@ -1,7 +1,10 @@
-import requests
+import time
 
-__checkin_url_0 = 'http://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN_PHOTOS&activityId=ACT_SIGNIN'
-__checkin_url_1 = 'http://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN&activityId=ACT_SIGNIN'
+import requests
+import util.constants as const
+
+__checkin_url_0 = 'http://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN_PHOTOS&activityId=ACT_SIGNIN&rand=%s'
+__checkin_url_1 = 'http://m.cloud.189.cn/v2/drawPrizeMarketDetails.action?taskId=TASK_SIGNIN&activityId=ACT_SIGNIN&rand=%s'
 
 
 def __get_header(cookie_header):
@@ -26,17 +29,18 @@ def __get_header(cookie_header):
 def cloud189_checkIn(cookie):
     header = __get_header(cookie)
     checkin_message = []
-    for i in range(0, 2):
 
+    for i in range(0, 2):
+        rand = str(round(time.time() * 1000))
         if i == 0:
-            url = __checkin_url_0
+            url = __checkin_url_0 % rand
         elif i == 1:
-            url = __checkin_url_1
+            url = __checkin_url_1 % rand
         else:
             checkin_message.append('error,please check the code')
             return checkin_message
 
-        resp = requests.get(url=url, headers=header, verify=False)
+        resp = requests.get(url=url, headers=header, verify=False, timeout=const.request_timeout)
         result = resp.text
         result_json = resp.json()
         resp.close()

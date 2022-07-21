@@ -1,9 +1,10 @@
 import requests
+import util.constants as const
 
 
 def pushplus_message(token, message):
     payload = {'token': token, "channel": "wechat", "template": "html", "content": message, "title": "checkin status"}
-    resp = requests.post("http://www.pushplus.plus/send", params=payload)
+    resp = requests.post("http://www.pushplus.plus/send", params=payload, timeout=const.request_timeout)
     if resp.status_code == 200:
         print('pushplus success code:', resp.status_code)
     else:
@@ -13,7 +14,7 @@ def pushplus_message(token, message):
 
 def server_messgae(token, title, message):
     payload = {"title": title, "desp": message, }
-    resp = requests.post(f"https://sctapi.ftqq.com/{token}.send", params=payload)
+    resp = requests.post(f"https://sctapi.ftqq.com/{token}.send", params=payload, timeout=const.request_timeout)
     result = resp.json()
     if result["code"] == 0:
         print("Push the message to server success(code:0),the code is:" + str(result["code"]))
